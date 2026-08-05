@@ -30,6 +30,9 @@ void Game::Update()
 void Game::Render() 
 {
     window_.clear();
+
+    paddle_.Draw(window_);
+
     window_.display();
 }
 
