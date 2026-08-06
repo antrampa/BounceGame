@@ -18,21 +18,18 @@ void Paddle::Draw(sf::RenderWindow& window) const
 
 void Paddle::Move(float deltaTime)
 {
-    float halfWidth = shape_.getSize().x / 2;
-
+    
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
     {
-        if(shape_.getPosition().x < 600 - halfWidth) 
-        {
-            shape_.move(sf::Vector2f(speed_ * deltaTime, 0));
-        }
+        shape_.move(sf::Vector2f(speed_ * deltaTime, 0));
     }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
     {
-        if(shape_.getPosition().x > halfWidth)
-        {
-            shape_.move({-speed_ * deltaTime, 0});
-        }
+        shape_.move({-speed_ * deltaTime, 0});
     }
+
+    float halfWidth = shape_.getSize().x / 2;
+    float x = std::clamp(shape_.getPosition().x, halfWidth, 600 - halfWidth);
+    shape_.setPosition({x, shape_.getPosition().y});
 }
