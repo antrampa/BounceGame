@@ -1,5 +1,7 @@
 #include "Paddle.h"
 
+#include <algorithm>
+
 Paddle::Paddle() : 
     shape_({120, 20}),
     speed_(750) 
@@ -16,13 +18,21 @@ void Paddle::Draw(sf::RenderWindow& window) const
 
 void Paddle::Move(float deltaTime)
 {
+    float halfWidth = shape_.getSize().x / 2;
+
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
     {
-        shape_.move(sf::Vector2f(speed_ * deltaTime, 0));
+        if(shape_.getPosition().x < 600 - halfWidth) 
+        {
+            shape_.move(sf::Vector2f(speed_ * deltaTime, 0));
+        }
     }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
     {
-        shape_.move({-speed_ * deltaTime, 0});
+        if(shape_.getPosition().x > halfWidth)
+        {
+            shape_.move({-speed_ * deltaTime, 0});
+        }
     }
 }
