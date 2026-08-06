@@ -1,0 +1,17 @@
+#pragma once
+
+#include <SFML/Graphics.hpp>
+
+class Ball 
+{
+    private:
+        sf::CircleShape shape_;
+        sf::Vector2f direction_;
+        float speed_;
+
+    public:
+        Ball();
+
+        void Draw(sf::RenderWindow& windows) const;
+        void Move(float deltaTime);
+};

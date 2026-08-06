@@ -27,6 +27,7 @@ void Game::Update()
     float deltaTime = clock_.restart().asSeconds();
 
     paddle_.Move(deltaTime);
+    ball_.Move(deltaTime);
 }
 
 void Game::Render() 
@@ -34,6 +35,7 @@ void Game::Render()
     window_.clear();
 
     paddle_.Draw(window_);
+    ball_.Draw(window_);
 
     window_.display();
 }

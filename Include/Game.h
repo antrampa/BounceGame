@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Paddle.h"
+#include "Ball.h"
 
 class Game 
 {
@@ -11,6 +12,7 @@ class Game
         sf::Clock clock_;
 
         Paddle paddle_;
+        Ball ball_;
 
     public:
         Game();
