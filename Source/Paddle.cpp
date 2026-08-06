@@ -1,7 +1,8 @@
 #include "Paddle.h"
 
 Paddle::Paddle() : 
-    shape_({120, 20}) 
+    shape_({120, 20}),
+    speed_(750) 
 {
     shape_.setFillColor(sf::Color::Green);
     shape_.setOrigin(shape_.getGeometricCenter());
@@ -11,4 +12,17 @@ Paddle::Paddle() :
 void Paddle::Draw(sf::RenderWindow& window) const 
 {
     window.draw(shape_);
+}
+
+void Paddle::Move(float deltaTime)
+{
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
+    {
+        shape_.move(sf::Vector2f(speed_ * deltaTime, 0));
+    }
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
+    {
+        shape_.move({-speed_ * deltaTime, 0});
+    }
 }

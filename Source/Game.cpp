@@ -24,7 +24,9 @@ void Game::ProcessEvents()
 
 void Game::Update()
 {
+    float deltaTime = clock_.restart().asSeconds();
 
+    paddle_.Move(deltaTime);
 }
 
 void Game::Render() 

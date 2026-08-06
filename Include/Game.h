@@ -8,9 +8,10 @@ class Game
 {
     private:
         sf::RenderWindow window_;
+        sf::Clock clock_;
 
         Paddle paddle_;
-        
+
     public:
         Game();
 

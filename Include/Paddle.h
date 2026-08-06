@@ -6,9 +6,11 @@ class Paddle
 {
     private:
         sf::RectangleShape shape_;
+        float speed_;
 
     public:
         Paddle();
 
         void Draw(sf::RenderWindow& window) const;
+        void Move(float deltaTime);
 };
