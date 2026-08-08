@@ -57,3 +57,8 @@ void Ball::Bounce()
 {
     direction_.y *= -1;
 }
+
+bool Ball::IsOutside() const 
+{
+    return shape_.getPosition().y - shape_.getRadius() >  800;
+}

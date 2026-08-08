@@ -18,4 +18,5 @@ class Ball
 
         sf::FloatRect GetGlobalBounds() const;
         sf::Vector2f GetDirection() const;
+        bool IsOutside() const;
 };

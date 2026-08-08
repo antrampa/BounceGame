@@ -1,5 +1,7 @@
 #include "Game.h"
 
+#include <algorithm>
+
 Game::Game() : 
     window_(sf::VideoMode({600, 800}), "My SFML Bounce Game")
 {
@@ -39,6 +41,11 @@ void Game::Update()
     }
     
     HandleCollisions();
+
+    if(stats_.GetLives() <= 0)
+    {
+        Restart();
+    }
 }
 
 void Game::Render() 
@@ -51,6 +58,8 @@ void Game::Render()
     {
         ball.Draw(window_);
     }
+
+    stats_.Draw(window_);
 
     window_.display();
 }
@@ -68,7 +77,20 @@ void Game::HandleCollisions()
         if(isColliding && ball.GetDirection().y > 0) 
         {
             ball.Bounce();
+            stats_.SetScore(stats_.GetScore() + 1);
         }
+    }
+
+    std::size_t ballsMissed = std::erase_if(balls_, [](const Ball& ball) { return ball.IsOutside(); });
+    if(ballsMissed > 0)
+    {
+        stats_.SetLives(stats_.GetLives() - ballsMissed);
     }
 }
 
+void Game::Restart()
+{
+    balls_.clear();
+    ballSpawnClock_.restart();
+    stats_.Reset();
+}

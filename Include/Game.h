@@ -6,6 +6,7 @@
 
 #include "Paddle.h"
 #include "Ball.h"
+#include "GameStats.h"
 
 class Game 
 {
@@ -16,6 +17,8 @@ class Game
         Paddle paddle_;
         std::vector<Ball> balls_;
         sf::Clock ballSpawnClock_;
+
+        GameStats stats_;
 
     public:
         Game();
@@ -28,4 +31,5 @@ class Game
 
     private:
         void HandleCollisions();
+        void Restart();
 };
