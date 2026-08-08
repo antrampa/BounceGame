@@ -1,5 +1,7 @@
 # Bounce Game (SFML 3 + C++20)
 
+![alt text](image.png)
+
 A simple **Bounce** game built with **C++20** and **SFML 3** as a learning project to practice modern C++ game development concepts and become familiar with the SFML 3 API.
 
 This project focuses on writing clean, maintainable code while exploring game programming fundamentals such as rendering, input handling, collision detection, game loops, and object-oriented design.
