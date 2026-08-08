@@ -2,7 +2,7 @@
 
 Ball::Ball() :
     shape_(10),
-    speed_(100)
+    speed_(250)
 {
     shape_.setFillColor(sf::Color::Cyan);
     shape_.setOrigin(shape_.getGeometricCenter());
@@ -40,4 +40,14 @@ void Ball::Move(float deltaTime)
 sf::FloatRect Ball::GetGlobalBounds() const 
 {
     return shape_.getGlobalBounds();
+}
+
+sf::Vector2f Ball::GetDirection() const 
+{
+    return direction_;
+}
+
+void Ball::Bounce()
+{
+    direction_.y *= -1;
 }

@@ -14,6 +14,8 @@ class Ball
 
         void Draw(sf::RenderWindow& windows) const;
         void Move(float deltaTime);
+        void Bounce();
 
         sf::FloatRect GetGlobalBounds() const;
+        sf::Vector2f GetDirection() const;
 };

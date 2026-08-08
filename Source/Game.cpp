@@ -1,7 +1,5 @@
 #include "Game.h"
 
-#include <iostream>
-
 Game::Game() : 
     window_(sf::VideoMode({600, 800}), "My SFML Bounce Game")
 {
@@ -51,9 +49,9 @@ void Game::HandleCollisions()
 
     bool isColliding = ballBounds.findIntersection(paddleBounds).has_value();
 
-    if(isColliding)
+    if(isColliding && ball_.GetDirection().y > 0)
     {
-        std::cout << "Collision" << std::endl;
+        ball_.Bounce();
     }
 }
 
