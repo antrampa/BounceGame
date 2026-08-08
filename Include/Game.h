@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include <vector>
+
 #include "Paddle.h"
 #include "Ball.h"
 
@@ -12,7 +14,8 @@ class Game
         sf::Clock clock_;
 
         Paddle paddle_;
-        Ball ball_;
+        std::vector<Ball> balls_;
+        sf::Clock ballSpawnClock_;
 
     public:
         Game();
