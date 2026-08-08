@@ -38,7 +38,6 @@ void Game::Update()
         ball.Move(deltaTime);
     }
     
-
     HandleCollisions();
 }
 

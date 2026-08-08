@@ -1,5 +1,10 @@
 #include "Ball.h"
 
+#include <numbers>
+#include <cmath>
+
+#include "Random.h"
+
 Ball::Ball() :
     shape_(10),
     speed_(250)
@@ -8,7 +13,8 @@ Ball::Ball() :
     shape_.setOrigin(shape_.getGeometricCenter());
     shape_.setPosition({600 * 0.50f, 800 * 0.25f});
 
-    direction_ = {0, 1};
+    float angle = gRandom.GetFloat(0, 2 * std::numbers::pi_v<float>);
+    direction_ = { std::cos(angle), std::sin(angle) };
 }
 
 void Ball::Draw(sf::RenderWindow& window) const 
