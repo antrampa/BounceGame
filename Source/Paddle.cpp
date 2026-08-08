@@ -33,3 +33,8 @@ void Paddle::Move(float deltaTime)
     float x = std::clamp(shape_.getPosition().x, halfWidth, 600 - halfWidth);
     shape_.setPosition({x, shape_.getPosition().y});
 }
+
+sf::FloatRect Paddle::GetGlobalBounds() const 
+{
+    return shape_.getGlobalBounds();
+}

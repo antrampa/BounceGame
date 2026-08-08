@@ -8,7 +8,7 @@ Ball::Ball() :
     shape_.setOrigin(shape_.getGeometricCenter());
     shape_.setPosition({600 * 0.50f, 800 * 0.25f});
 
-    direction_ = {1, 0};
+    direction_ = {0, 1};
 }
 
 void Ball::Draw(sf::RenderWindow& window) const 
@@ -35,4 +35,9 @@ void Ball::Move(float deltaTime)
         shape_.setPosition(lastPosition);
         direction_.y *= -1;
     }
+}
+
+sf::FloatRect Ball::GetGlobalBounds() const 
+{
+    return shape_.getGlobalBounds();
 }

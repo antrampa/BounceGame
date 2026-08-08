@@ -22,4 +22,7 @@ class Game
         void ProcessEvents();
         void Update();
         void Render();
+
+    private:
+        void HandleCollisions();
 };

@@ -14,4 +14,6 @@ class Ball
 
         void Draw(sf::RenderWindow& windows) const;
         void Move(float deltaTime);
+
+        sf::FloatRect GetGlobalBounds() const;
 };

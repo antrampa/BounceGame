@@ -1,5 +1,7 @@
 #include "Game.h"
 
+#include <iostream>
+
 Game::Game() : 
     window_(sf::VideoMode({600, 800}), "My SFML Bounce Game")
 {
@@ -28,6 +30,8 @@ void Game::Update()
 
     paddle_.Move(deltaTime);
     ball_.Move(deltaTime);
+
+    HandleCollisions();
 }
 
 void Game::Render() 
@@ -38,5 +42,18 @@ void Game::Render()
     ball_.Draw(window_);
 
     window_.display();
+}
+
+void Game::HandleCollisions() 
+{
+    sf::FloatRect ballBounds = ball_.GetGlobalBounds();
+    sf::FloatRect paddleBounds = paddle_.GetGlobalBounds();
+
+    bool isColliding = ballBounds.findIntersection(paddleBounds).has_value();
+
+    if(isColliding)
+    {
+        std::cout << "Collision" << std::endl;
+    }
 }
 

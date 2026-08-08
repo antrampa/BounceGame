@@ -13,4 +13,6 @@ class Paddle
 
         void Draw(sf::RenderWindow& window) const;
         void Move(float deltaTime);
+
+        sf::FloatRect GetGlobalBounds() const;
 };
