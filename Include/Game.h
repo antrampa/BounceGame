@@ -7,6 +7,7 @@
 #include "Paddle.h"
 #include "Ball.h"
 #include "GameStats.h"
+#include "GameSounds.h"
 
 class Game 
 {
@@ -19,6 +20,7 @@ class Game
         sf::Clock ballSpawnClock_;
 
         GameStats stats_;
+        GameSounds sounds_;
 
     public:
         Game();

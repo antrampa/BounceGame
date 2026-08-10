@@ -78,6 +78,7 @@ void Game::HandleCollisions()
         {
             ball.Bounce();
             stats_.SetScore(stats_.GetScore() + 1);
+            sounds_.PlayBounceSound();
         }
     }
 
