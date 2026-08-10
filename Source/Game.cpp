@@ -52,6 +52,8 @@ void Game::Render()
 {
     window_.clear();
 
+    background_.Draw(window_);
+
     paddle_.Draw(window_);
 
     for(const Ball& ball : balls_)

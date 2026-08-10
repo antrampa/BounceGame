@@ -8,6 +8,7 @@
 #include "Ball.h"
 #include "GameStats.h"
 #include "GameSounds.h"
+#include "Background.h"
 
 class Game 
 {
@@ -21,6 +22,7 @@ class Game
 
         GameStats stats_;
         GameSounds sounds_;
+        Background background_;
 
     public:
         Game();
