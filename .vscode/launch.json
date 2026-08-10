@@ -3,12 +3,13 @@
     "configurations": [
         {
             "name": "Run Bounce (Debug)",
-            "type": "cppvsdbg",
+            "type": "cppvsdbg", // use "cppdbg" on Mac and Linux
+            // "MIMode": "lldb" on Mac, "gdb" on Linux
             "request": "launch",
             "program": "${workspaceFolder}/Build/Debug/Bounce",
             "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal",
-            "preLaunchTask": "${defaultBuildTask}"
+            "console": "integratedTerminal", // remove this line on Mac and Linux
+            "preLaunchTask": "${defaultBuildTask}" // build before running (optional)
         }
     ]
 }
