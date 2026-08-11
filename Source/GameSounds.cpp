@@ -17,3 +17,9 @@ void GameSounds::PlayBounceSound()
 {
     bounceSound_.play();
 }
+
+void GameSounds::RestartMusic()
+{
+    music_.stop();
+    music_.play();
+}

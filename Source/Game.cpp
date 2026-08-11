@@ -97,5 +97,6 @@ void Game::Restart()
 {
     balls_.clear();
     ballSpawnClock_.restart();
+    sounds_.RestartMusic();
     stats_.Reset();
 }
