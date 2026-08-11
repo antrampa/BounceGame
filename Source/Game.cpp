@@ -5,7 +5,9 @@
 #include "GameConfig.h"
 
 Game::Game() : 
-    window_(sf::VideoMode(sf::Vector2u(gConfig.windowSize)), "My SFML Bounce Game")
+    window_(sf::VideoMode(sf::Vector2u(gConfig.windowSize)), 
+            "My SFML Bounce Game",  
+            sf::Style::Titlebar | sf::Style::Close)
 {
     window_.setFramerateLimit(60);
 }
