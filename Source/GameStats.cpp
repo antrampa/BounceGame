@@ -1,6 +1,7 @@
 #include "GameStats.h"
 
 #include <format>
+#include <fstream>
 
 GameStats::GameStats() : 
     font_("Content/Montserrat-Regular.ttf"),
@@ -18,7 +19,17 @@ GameStats::GameStats() :
 
     highScoreText_.setPosition({10, 110});
     highScoreText_.setFillColor(sf::Color::Yellow);
-    SetHighScore(0);
+    
+    if(std::ifstream file{"HighScores.txt"})
+    {
+        file >> highScore_;
+    }
+    else 
+    {
+        highScore_ = 0;
+    }
+
+    SetHighScore(highScore_);
 }
 
 void GameStats::Draw(sf::RenderWindow& window) const
@@ -66,6 +77,10 @@ void GameStats::Reset()
 {
     if(score_ > highScore_)
     {
+        if(std::ofstream file{"HighScores.txt"})
+        {
+            file << score_;
+        }
         SetHighScore(score_);
     }
 
