@@ -2,8 +2,10 @@
 
 #include <algorithm>
 
+#include "GameConfig.h"
+
 Game::Game() : 
-    window_(sf::VideoMode({600, 800}), "My SFML Bounce Game")
+    window_(sf::VideoMode(sf::Vector2u(gConfig.windowSize)), "My SFML Bounce Game")
 {
     window_.setFramerateLimit(60);
 }
@@ -28,7 +30,7 @@ void Game::Update()
 {
     float deltaTime = clock_.restart().asSeconds();
 
-    if(ballSpawnClock_.getElapsedTime().asSeconds() > 2)
+    if(ballSpawnClock_.getElapsedTime().asSeconds() > gConfig.ballSpawnCooldown)
     {
         balls_.emplace_back();
         ballSpawnClock_.restart();

@@ -4,14 +4,15 @@
 #include <cmath>
 
 #include "Random.h"
+#include "GameConfig.h"
 
 Ball::Ball() :
-    shape_(10),
-    speed_(250)
+    shape_(gConfig.ballRadius),
+    speed_(gConfig.ballSpeed)
 {
     shape_.setFillColor(sf::Color::Cyan);
     shape_.setOrigin(shape_.getGeometricCenter());
-    shape_.setPosition({600 * 0.50f, 800 * 0.25f});
+    shape_.setPosition({gConfig.windowSize.x * 0.50f, gConfig.windowSize.y * 0.25f});
 
     float angle = gRandom.GetFloat(0, 2 * std::numbers::pi_v<float>);
     direction_ = { std::cos(angle), std::sin(angle) };
@@ -29,7 +30,7 @@ void Ball::Move(float deltaTime)
     shape_.move(direction_ * speed_ * deltaTime);
 
     if(shape_.getPosition().x < shape_.getRadius() ||
-        shape_.getPosition().x >= 600 - shape_.getRadius()
+        shape_.getPosition().x >= gConfig.windowSize.x - shape_.getRadius()
     )
     {
         shape_.setPosition(lastPosition);
@@ -60,5 +61,5 @@ void Ball::Bounce()
 
 bool Ball::IsOutside() const 
 {
-    return shape_.getPosition().y - shape_.getRadius() >  800;
+    return shape_.getPosition().y - shape_.getRadius() >  gConfig.windowSize.y;
 }

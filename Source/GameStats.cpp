@@ -3,6 +3,8 @@
 #include <format>
 #include <fstream>
 
+#include "GameConfig.h"
+
 GameStats::GameStats() : 
     font_("Content/Montserrat-Regular.ttf"),
     scoreText_(font_),
@@ -15,7 +17,7 @@ GameStats::GameStats() :
 
     livesText_.setPosition({10, 60});
     livesText_.setFillColor(sf::Color::Red);
-    SetLives(5);
+    SetLives(gConfig.startingLives);
 
     highScoreText_.setPosition({10, 110});
     highScoreText_.setFillColor(sf::Color::Yellow);
@@ -85,5 +87,5 @@ void GameStats::Reset()
     }
 
     SetScore(0);
-    SetLives(5);
+    SetLives(gConfig.startingLives);
 }

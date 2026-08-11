@@ -2,13 +2,15 @@
 
 #include <algorithm>
 
+#include "GameConfig.h"
+
 Paddle::Paddle() : 
-    shape_({120, 20}),
-    speed_(750) 
+    shape_(gConfig.paddleSize),
+    speed_(gConfig.paddleSpeed) 
 {
     shape_.setFillColor(sf::Color::Green);
     shape_.setOrigin(shape_.getGeometricCenter());
-    shape_.setPosition({600 * 0.50f, 800 * 0.85f});
+    shape_.setPosition({gConfig.windowSize.x * 0.50f,  gConfig.windowSize.y * 0.85f});
 }
 
 void Paddle::Draw(sf::RenderWindow& window) const 
@@ -30,7 +32,7 @@ void Paddle::Move(float deltaTime)
     }
 
     float halfWidth = shape_.getSize().x / 2;
-    float x = std::clamp(shape_.getPosition().x, halfWidth, 600 - halfWidth);
+    float x = std::clamp(shape_.getPosition().x, halfWidth, gConfig.windowSize.x - halfWidth);
     shape_.setPosition({x, shape_.getPosition().y});
 }
 
