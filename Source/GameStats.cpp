@@ -5,7 +5,8 @@
 GameStats::GameStats() : 
     font_("Content/Montserrat-Regular.ttf"),
     scoreText_(font_),
-    livesText_(font_)
+    livesText_(font_),
+    highScoreText_(font_)
 {
     scoreText_.setPosition({10, 10});
     scoreText_.setFillColor(sf::Color::Cyan);
@@ -14,12 +15,17 @@ GameStats::GameStats() :
     livesText_.setPosition({10, 60});
     livesText_.setFillColor(sf::Color::Red);
     SetLives(5);
+
+    highScoreText_.setPosition({10, 110});
+    highScoreText_.setFillColor(sf::Color::Yellow);
+    SetHighScore(0);
 }
 
 void GameStats::Draw(sf::RenderWindow& window) const
 {
     window.draw(scoreText_);
     window.draw(livesText_);
+    window.draw(highScoreText_);
 }
 
 void GameStats::SetScore(int score)
@@ -35,6 +41,12 @@ void GameStats::SetLives(int lives)
     livesText_.setString(std::format("Lives: {}", lives_));
 }
 
+void GameStats::SetHighScore(int highScore) 
+{
+    highScore_ = highScore;
+    highScoreText_.setString("High: " + std::to_string(highScore_));
+}
+
 int GameStats::GetScore() const
 {
     return score_;
@@ -45,8 +57,18 @@ int GameStats::GetLives() const
     return lives_;
 }
 
+int GameStats::GetHighScore() const
+{
+    return highScore_;
+}
+
 void GameStats::Reset() 
 {
+    if(score_ > highScore_)
+    {
+        SetHighScore(score_);
+    }
+
     SetScore(0);
     SetLives(5);
 }

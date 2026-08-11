@@ -9,9 +9,11 @@ class GameStats
 
         sf::Text scoreText_;
         sf::Text livesText_;
+        sf::Text highScoreText_;
 
         int score_;
         int lives_;
+        int highScore_;
 
     public:
         GameStats();
@@ -20,9 +22,11 @@ class GameStats
 
         void SetScore(int score);
         void SetLives(int lives);
+        void SetHighScore(int highScore);
 
         int GetScore() const;
         int GetLives() const;
+        int GetHighScore() const;
 
         void Reset();
 };
