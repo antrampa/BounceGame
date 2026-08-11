@@ -79,6 +79,24 @@ cmake --build Build --config Debug -j
 ./build/Debug/BounceGame
 ```
 
+
+### Release Configure
+
+```bash
+cmake -S . -B build    
+```
+
+### Release Build
+
+```bash
+cmake --build build --config Release
+```
+
+### Run
+
+```bash
+./build/Release/BounceGame
+```
 *(Executable name may vary depending on your platform and CMake configuration.)*
 
 ---
